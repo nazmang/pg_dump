@@ -23,7 +23,7 @@ fi
 
 if [[ -f "${POSTGRES_PASSWORD_FILE}" ]];
 then
-   source "${POSTGRES_PASSWORD_FILE}"
+    POSTGRES_PASSWORD=$(<"${POSTGRES_PASSWORD_FILE}")
 else
    echo "WARN: No password file found!"
    echo "It is suggested that a docker secrets file is used for security concerns."
