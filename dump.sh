@@ -18,8 +18,7 @@ mkdir -p "${PGDUMP}"
 echo "--------"
 echo "Job started: $(date). Dumping to ${FILE}"
 
-pg_dump -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -f "$FILE" -d "$POSTGRES_DB"
-gzip "$FILE"
+pg_dump -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -f "$FILE" -d "$POSTGRES_DB" | gzip > "$FILE".gz
 
 if [[ -n "${RETAIN_COUNT}" ]]; then
     file_count=1
